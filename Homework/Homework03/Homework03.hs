@@ -4,6 +4,13 @@
 -- The function has to take the hourly consumption of an electrical device, the hours of daily use, and the maximum monthly consumption allowed.
 -- (Monthly usage = consumption (kW) * hours of daily use (h) * 30 days).
 
+checkMonthlyConsumption :: Double -> Double -> Double -> String
+checkMonthlyConsumption h d m
+    | tot > m = "Bigger"
+    | tot < m = "Smaller"
+    | otherwise = "Equal"
+    where tot = h * d
+          
 
 -- Question 2
 -- Prelude:
@@ -11,6 +18,14 @@
 -- So `show 3` will produce `"3"` and `show (3 > 2)` will produce `"True"`.
 
 -- In the previous function, return the excess/savings of consumption as part of the message.
+
+checkMonthlyConsumption' :: Double -> Double -> Double -> String
+checkMonthlyConsumption' h d m 
+    | tot > m = "Bigger by " ++ show delta
+    | tot < m = "Smaller by " ++ show delta
+    | otherwise = "Equal"
+    where tot = h * d
+          delta = m - tot
 
 
 -- Question 3
@@ -22,7 +37,6 @@
 -- Write a function that takes in two numbers and returns their quotient such that it is not greater than 1.
 -- Return the number as a string, and in case the divisor is 0, return a message why the division is not
 -- possible. To implement this function using both guards and if-then-else statements.  
-
 
 -- Question 5
 -- Write a function that takes in two numbers and calculates the sum of squares for the product and quotient
